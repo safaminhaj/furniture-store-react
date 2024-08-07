@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../components";
+import { Header, Navbar } from "../components";
 
 const HomeLayout = () => {
   return (
     <>
       <Header />
-      <nav>
+      <Navbar />
+      {/* <nav>
         <span className="navbar bg-primary-content">Comfy Store</span>
-      </nav>
+      </nav> */}
       <section className="align-element">
         <Outlet />
       </section>

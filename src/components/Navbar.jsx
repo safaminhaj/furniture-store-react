@@ -55,7 +55,7 @@ const Navbar = () => {
           <label className="swap swap-rotate items-center">
             <input
               type="checkbox"
-              onClick={handleTheme}
+              onChange={handleTheme}
               checked={theme === themes.winter ? false : true}
             />
             <BsMoonFill className="swap-on" />

@@ -22,22 +22,17 @@ const Hero = () => {
         </div>
       </div>
       <div className="hidden lg:carousel carousel-center flex-1  bg-neutral  rounded-box space-x-3 p-4 w-80  h-[28rem]">
-        <div className="carousel-item">
-          <img
-            src={hero1}
-            alt=""
-            className="rounded-box h-full w-80  object-cover"
-          />
-        </div>
-        <div className="carousel-item">
-          <img src={hero2} alt="" className="rounded-box" />
-        </div>
-        <div className="carousel-item">
-          <img src={hero3} alt="" className="rounded-box" />
-        </div>
-        <div className="carousel-item">
-          <img src={hero4} alt="" className="rounded-box" />
-        </div>
+        {images.map((image) => {
+          return (
+            <div key={image} className="carousel-item">
+              <img
+                src={image}
+                alt=""
+                className="rounded-box h-full w-80  object-cover"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

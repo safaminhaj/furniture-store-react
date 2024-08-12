@@ -8,7 +8,7 @@ const images = [hero1, hero2, hero3, hero4];
 
 const Hero = () => {
   return (
-    <div className="flex flex-wrap mt-20 gap-20">
+    <div className="flex flex-wrap gap-20">
       <div className="flex flex-col sm:w-[50%] mt-5">
         <h1 className="text-4xl sm:text-6xl font-bold leading-none tracking-tight">
           We are changing the way people shop

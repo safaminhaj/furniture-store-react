@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <>
-      <div className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center mt-20">
+      <div className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center">
         <h1 className="text-4xl sm:text-6xl font-bold tracking-tight leading-none">
           We love
         </h1>

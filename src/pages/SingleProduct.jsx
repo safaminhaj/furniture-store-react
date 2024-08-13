@@ -8,7 +8,6 @@ import { useState } from "react";
 
 export const loader = async ({ params }) => {
   const response = await customFetch(`/products/${params.id}`);
-  console.log(response);
   return { product: response.data.data };
 };
 
@@ -20,7 +19,6 @@ const SingleProduct = () => {
   const [amount, setAmount] = useState(1);
 
   const handleAmount = (e) => {
-    console.log(e.target.value);
     setAmount(parseInt(e.target.value));
   };
   return (

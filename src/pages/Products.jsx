@@ -7,7 +7,7 @@ export const loader = async () => {
   // console.log(response.data.data);
   const products = response.data.data;
   const meta = response.data.meta;
-  return { products, response };
+  return { products, meta };
 };
 
 const Products = () => {

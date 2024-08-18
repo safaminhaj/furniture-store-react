@@ -38,7 +38,7 @@ export const cartSlice = createSlice({
     removeItem: (state, action) => {
       const { cartID } = action.payload;
       const product = state.cartItems.find((i) => i.cartID === cartID);
-      state.cartItems = cartItems.filter((i) => i.cartID !== cartID);
+      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
       state.numItemsInCart -= product.amount;
       state.cartTotal -= product.price * product.amount;
       cartSlice.caseReducers.calculateTotals(state);
@@ -47,8 +47,8 @@ export const cartSlice = createSlice({
     editItem: (state, action) => {
       const { cartID, amount } = action.payload;
       const item = state.cartItems.find((i) => i.cartID === cartID);
-      state.numItemsInCart = amount - item.amount;
-      state.cartTotal = item.price * (amount - item.amount);
+      state.numItemsInCart += amount - item.amount;
+      state.cartTotal += item.price * (amount - item.amount);
       item.amount = amount;
       cartSlice.caseReducers.calculateTotals(state);
       toast.success("Cart updated");

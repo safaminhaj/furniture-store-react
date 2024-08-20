@@ -1,8 +1,9 @@
 import { FormInput, SubmitBtn } from "../components";
-import { Form, Link, redirect } from "react-router-dom";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
 import { customFetch } from "../utils";
 import { loginUser } from "../features/user/userSlice";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 export const action =
   (store) =>
@@ -24,6 +25,23 @@ export const action =
   };
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const loginAsGuestUser = async () => {
+    try {
+      const response = await customFetch.post("/auth/local", {
+        identifier: "test@test.com",
+        password: "secret",
+      });
+      dispatch(loginUser(response.data));
+      toast.success("Welcome guest user!");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      const errorMessage = error?.response?.data?.error?.message;
+      toast.error(errorMessage);
+    }
+  };
   return (
     <section className="h-screen grid place-items-center">
       <Form
@@ -31,22 +49,16 @@ const Login = () => {
         className="card w-96 shadow-lg bg-base-100  p-8 gap-y-4"
       >
         <h4 className="text-3xl text-center font-bold">Login</h4>
-        <FormInput
-          label="Email"
-          type="email"
-          name="identifier"
-          defaultValue="test@test.com"
-        />
-        <FormInput
-          label="Password"
-          type="password"
-          name="password"
-          defaultValue="secret"
-        />
+        <FormInput label="Email" type="email" name="identifier" />
+        <FormInput label="Password" type="password" name="password" />
         <div className="mt-4">
           <SubmitBtn className="btn btn-primary" text="LOGIN" />
         </div>
-        <button type="button" className="btn btn-secondary btn-block ">
+        <button
+          type="button"
+          className="btn btn-secondary btn-block"
+          onClick={loginAsGuestUser}
+        >
           GUEST USER
         </button>
         <p className="text-center">

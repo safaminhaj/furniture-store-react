@@ -23,6 +23,7 @@ const CartItem = ({ cartItem }) => {
         alt={title}
         className="h-24 w-24 sm:h-32 sm:w-32 rounded-lg object-cover"
       />
+      test
       <div className="sm:ml-16 sm:w-48">
         <h3 className="font-medium capitalize">{title}</h3>
         <h4 className="mt-2 capitalize text-neutral-content text-sm">
